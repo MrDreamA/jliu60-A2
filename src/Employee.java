@@ -21,12 +21,15 @@ public class Employee extends Person{
     public String getJob() {
         return job;
     }
+    @Override
     public String getName() {
         return super.getName();
     }
+    @Override
     public String getGender() {
         return super.getGender();
     }
+    @Override
     public int getHeight() {
         return super.getHeight();
     }
@@ -38,12 +41,15 @@ public class Employee extends Person{
     public void setJob(String job) {
         this.job = job;
     }
+    @Override
     public void setName(String name) {
         super.setName(name);
     }
+    @Override
     public void setGender(String gender) {
         super.setGender(gender);
     }
+    @Override
     public void setHeight(int height) {
         super.setHeight(height);
     }
