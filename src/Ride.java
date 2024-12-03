@@ -102,7 +102,27 @@ public class Ride implements RideInterface{
     // Run methods
     @Override
     public void runOneCycle() {
-
+        if(this.employee == null){
+            System.out.println("No employee assigned to this ride");
+        }
+        else{
+            if(visitorQueue.isEmpty()){
+                System.out.println("Waiting queue is empty");
+            }
+            else{
+                for(int i = 1;i<= this.maxRider; i++){
+                    if(visitorQueue.isEmpty()){
+                        break;
+                    }
+                    else{
+                        Visitor visitor = visitorQueue.poll();
+                        visitorHistory.add(visitor);
+                        System.out.println("Visitor "+visitor.getName() +" removed from waiting queue");
+                    }
+                }
+                numOfCycles++;
+            }
+        }
     }
 
     @Override
@@ -169,6 +189,18 @@ public class Ride implements RideInterface{
         visitorHistory.sort(new VisitorComparator());
     }
 
+    public void exportRideHistory(){
+        if(visitorHistory.isEmpty()){
+            System.out.println("Ride history is empty");
+        }
+        else{
+            // Use iterator
+            Iterator<Visitor> it = visitorHistory.iterator();
+            while (it.hasNext()) {
+                Visitor visitor = it.next();
+                printVisitorDetails(visitor);
+            }
+        }
 
 
 }

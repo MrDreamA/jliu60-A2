@@ -4,6 +4,8 @@ public class AssignmentTwo {
 //        a2.partThree();
 //        a2.partFourA();
 //        a2.partFourB();
+//        a2.partFive();
+        a2.partSix();
     }
     public void partThree(){
         // Create a Ride
@@ -85,6 +87,57 @@ public class AssignmentTwo {
 
     }
     public void partFive(){
+        // Create a Ride
+        Employee employee = new Employee("Admin", "Male", 190, "Admin", "Admin");
+        Ride rollerCoaster = new Ride("Roller Coaster",10, 4, employee);
+        // Add 10 visitors into the queue
+        Visitor visitor1 = new Visitor("Honkai", "Male", 180, 0, 50);
+        Visitor visitor2 = new Visitor("ZZZ", "Female", 160, 0, 25);
+        Visitor visitor3 = new Visitor("StarRail", "Male", 190, 1, 26);
+        Visitor visitor4 = new Visitor("Genshin", "Female", 170, 1, 24);
+        Visitor visitor5 = new Visitor("Mihoyo", "Male", 150, 2, 12);
+        Visitor visitor6 = new Visitor("Arknights", "Male", 190, 1, 26);
+        Visitor visitor7 = new Visitor("Valhalla", "Male", 190, 1, 26);
+        Visitor visitor8 = new Visitor("Identity5","Undefined",150,1,30);
+        Visitor visitor9 = new Visitor("MiniWorld","Male",150,1,3);
+        Visitor visitor10 = new Visitor("NTE","Female",170,0,20);
+
+        rollerCoaster.addVisitorToQueue(visitor1);
+        rollerCoaster.addVisitorToQueue(visitor2);
+        rollerCoaster.addVisitorToQueue(visitor3);
+        rollerCoaster.addVisitorToQueue(visitor4);
+        rollerCoaster.addVisitorToQueue(visitor5);
+        rollerCoaster.addVisitorToQueue(visitor6);
+        rollerCoaster.addVisitorToQueue(visitor7);
+        rollerCoaster.addVisitorToQueue(visitor8);
+        rollerCoaster.addVisitorToQueue(visitor9);
+        rollerCoaster.addVisitorToQueue(visitor10);
+
+        // Print the queue
+        System.out.println("Queue:");
+        rollerCoaster.printQueue();
+        System.out.println("-------------------------------------");
+        System.out.println();
+
+
+        // Run one cycle
+        rollerCoaster.runOneCycle();
+        System.out.println("-------------------------------------");
+
+        // Print the queue again
+        System.out.println("Updated Queue:");
+        rollerCoaster.printQueue();
+        System.out.println("-------------------------------------");
+
+
+
+        // Print History
+        System.out.println("History:");
+        rollerCoaster.printRideHistory();
+
+
+
+
     }
     public void partSix(){
     }
