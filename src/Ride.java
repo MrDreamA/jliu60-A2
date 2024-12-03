@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -189,18 +192,29 @@ public class Ride implements RideInterface{
         visitorHistory.sort(new VisitorComparator());
     }
 
-    public void exportRideHistory(){
-        if(visitorHistory.isEmpty()){
+    public void exportRideHistory() {
+        if (visitorHistory.isEmpty()) {
             System.out.println("Ride history is empty");
-        }
-        else{
-            // Use iterator
-            Iterator<Visitor> it = visitorHistory.iterator();
-            while (it.hasNext()) {
-                Visitor visitor = it.next();
-                printVisitorDetails(visitor);
+        } else {
+            try(BufferedWriter writer = new BufferedWriter(new FileWriter("rideHistory.csv"))) {
+                // Write Header of csv
+                writer.write("Name,Gender,Height,VIP,Age");
+                writer.newLine();
+                // Write data
+                for(Visitor visitor : visitorHistory){
+                    writer.write(visitor.getName()+",");
+                    writer.write(visitor.getGender()+",");
+                    writer.write(visitor.getHeight()+",");
+                    writer.write(visitor.getVip()+",");
+                    writer.write(visitor.getAge()+",");
+                    writer.newLine();
+                }
+                System.out.println("Exported to file: rideHistory.csv");
+            }
+            catch (IOException e) {
+                System.err.println("Error writing to file: " + e.getMessage());
             }
         }
-
+    }
 
 }
