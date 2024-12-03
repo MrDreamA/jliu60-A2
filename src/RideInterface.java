@@ -10,9 +10,9 @@ public interface RideInterface {
 
     void addVisitorToHistory(Visitor visitor);
 
-    void checkVisitorFromHistory(Visitor visitor);
+    boolean checkVisitorFromHistory(Visitor visitor);
 
-    void numberOfVisitors();
+    int numberOfVisitors();
 
     void printRideHistory();
 }
