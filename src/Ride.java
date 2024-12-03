@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -214,6 +212,20 @@ public class Ride implements RideInterface{
             catch (IOException e) {
                 System.err.println("Error writing to file: " + e.getMessage());
             }
+        }
+    }
+    public void importRideHistory() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("rideHistory.csv"))) {
+            String line;
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                Visitor visitor = new Visitor(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]));
+                visitorHistory.add(visitor);
+            }
+            System.out.println("Imported from file: rideHistory.csv");
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
         }
     }
 

@@ -5,7 +5,8 @@ public class AssignmentTwo {
 //        a2.partFourA();
 //        a2.partFourB();
 //        a2.partFive();
-        a2.partSix();
+//        a2.partSix();
+        a2.partSeven();
     }
     public void partThree(){
         // Create a Ride
@@ -160,5 +161,14 @@ public class AssignmentTwo {
         rollerCoaster.exportRideHistory();
     }
     public void partSeven(){
+        // Create a Ride
+        Ride rollerCoaster = new Ride("Ave Mujica",5, 2, null);
+
+        // Read file
+        rollerCoaster.importRideHistory();
+        // Print number of visitors
+        rollerCoaster.numberOfVisitors();
+        // Print all visitors
+        rollerCoaster.printRideHistory();
     }
 }
