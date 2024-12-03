@@ -215,13 +215,15 @@ public class Ride implements RideInterface{
         }
     }
     public void importRideHistory() {
+        // Read file
         try (BufferedReader reader = new BufferedReader(new FileReader("rideHistory.csv"))) {
             String line;
-            reader.readLine();
-            while ((line = reader.readLine()) != null) {
+            reader.readLine(); // Skip the header
+            while ((line = reader.readLine()) != null) { // Read lines
                 String[] data = line.split(",");
+                // Create visitor
                 Visitor visitor = new Visitor(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]));
-                visitorHistory.add(visitor);
+                visitorHistory.add(visitor); // import the visitor into the history
             }
             System.out.println("Imported from file: rideHistory.csv");
         } catch (IOException e) {
