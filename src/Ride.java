@@ -1,9 +1,16 @@
-public class Ride {
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Ride implements RideInterface{
     // Declare instance variables
     private String name;
     private int maxPassenger;
     private Employee employee;
-    
+
+    // Declare queue
+    Queue<Visitor> visitorQueue = new LinkedList<>();
+
     // Constructor
     public Ride() {
         this.name = null;
@@ -35,5 +42,56 @@ public class Ride {
     }
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+    // Queue Methods
+    @Override
+    public void addVisitorToQueue(Visitor visitor) {
+        visitorQueue.add(visitor);
+    }
+
+    @Override
+    public void removeVisitorFromQueue(Visitor visitor) {
+        visitorQueue.remove(visitor);
+    }
+
+    @Override
+    public void printQueue() {
+        int index = 1;
+        for (Visitor visitor : visitorQueue) {
+            System.out.println("Visitor "+index);
+            System.out.println("Name: "+visitor.getName());
+            System.out.println("Gender: "+visitor.getGender());
+            System.out.println("Height: "+visitor.getHeight());
+            System.out.println("VIP: "+visitor.getVip());
+            System.out.println("Age: "+visitor.getAge());
+            System.out.println("-----------");
+            index++;
+        }
+    }
+
+    // Run methods
+    @Override
+    public void runOneCycle() {
+
+    }
+
+    @Override
+    public void addVisitorToHistory(Visitor visitor) {
+
+    }
+
+    @Override
+    public void checkVisitorFromHistory(Visitor visitor) {
+
+    }
+
+    @Override
+    public void numberOfVisitors() {
+
+    }
+
+    @Override
+    public void printRideHistory() {
+
     }
 }
